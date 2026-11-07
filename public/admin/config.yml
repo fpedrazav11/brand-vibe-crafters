@@ -3,7 +3,7 @@
 
 backend:
   name: github
-  repo: TU-USUARIO/brand-vibe-crafters   # ← cámbialo por tu usuario/repositorio de GitHub
+  repo: fpedrazav11/brand-vibe-crafters
   branch: main
   commit_messages:
     create: 'Panel: crea {{collection}} "{{slug}}"'

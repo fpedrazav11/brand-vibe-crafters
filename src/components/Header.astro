@@ -8,12 +8,171 @@ const links = [
   ['#nosotros', 'Nosotros'],
 ];
 ---
-<header style="position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid #EBE6F0">
-<nav class="bv-nav" aria-label="Principal" style="max-width: 1240px; margin: 0 auto; padding: 14px clamp(16px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px">
-<a href="#inicio" aria-label={`${site.name}, inicio`} style="display: flex; align-items: center"><img src={site.logo} alt={site.tagline} width="160" height="50" style="height: 50px; width: auto; display: block"></a>
-<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 26px; font-size: 14px; font-weight: 500">
-{links.map(([href, label]) => <a href={href} style="color: #2A0044">{label}</a>)}
-<a class="bv-btn" href={wa(site.ctaMessage)} target="_blank" rel="noopener" style="color: #FFFFFF; background: #3A015C; padding: 11px 20px; border-radius: 999px; font-weight: 700">{site.ctaLabel}</a>
-</div>
-</nav>
+<header class="bv-header">
+  <nav class="bv-nav bv-bar" aria-label="Principal">
+    <a href="#inicio" class="bv-logo" aria-label={`${site.name}, inicio`}>
+      <img src={site.logo} alt={site.tagline} width="160" height="50" />
+    </a>
+
+    <button
+      type="button"
+      class="bv-burger"
+      aria-label="Abrir menú"
+      aria-expanded="false"
+      aria-controls="bv-menu"
+    >
+      <span></span><span></span><span></span>
+    </button>
+
+    <div id="bv-menu" class="bv-menu">
+      {links.map(([href, label]) => <a href={href} class="bv-link">{label}</a>)}
+      <a class="bv-btn bv-cta" href={wa(site.ctaMessage)} target="_blank" rel="noopener">{site.ctaLabel}</a>
+    </div>
+  </nav>
 </header>
+
+<style>
+  .bv-header {
+    position: sticky;
+    top: 0;
+    z-index: 30;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid #EBE6F0;
+  }
+  .bv-bar {
+    position: relative;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 14px clamp(16px, 4vw, 40px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px 28px;
+  }
+  .bv-logo { display: flex; align-items: center; }
+  .bv-logo img { height: 50px; width: auto; display: block; }
+
+  .bv-menu {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 6px 26px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .bv-link { color: #2A0044; }
+  .bv-cta {
+    color: #FFFFFF;
+    background: #3A015C;
+    padding: 11px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+  }
+  .bv-cta:hover { color: #FFFFFF; }
+
+  .bv-burger { display: none; }
+
+  /* Tablet y móvil: menú hamburguesa */
+  @media (max-width: 1024px) {
+    .bv-logo img { height: 42px; }
+
+    .bv-burger {
+      display: inline-flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 46px;
+      height: 46px;
+      padding: 0 12px;
+      border: 1.5px solid #E4DDEB;
+      border-radius: 14px;
+      background: #FFFFFF;
+      cursor: pointer;
+    }
+    .bv-burger span {
+      display: block;
+      height: 2.5px;
+      width: 100%;
+      border-radius: 2px;
+      background: #3A015C;
+      transition: transform 0.25s ease, opacity 0.2s ease;
+    }
+    .bv-burger[aria-expanded='true'] span:nth-child(1) { transform: translateY(7.5px) rotate(45deg); }
+    .bv-burger[aria-expanded='true'] span:nth-child(2) { opacity: 0; }
+    .bv-burger[aria-expanded='true'] span:nth-child(3) { transform: translateY(-7.5px) rotate(-45deg); }
+
+    .bv-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      flex-direction: column;
+      flex-wrap: nowrap;
+      align-items: stretch;
+      gap: 0;
+      padding: 8px clamp(16px, 4vw, 40px) 20px;
+      background: #FFFFFF;
+      border-bottom: 1px solid #EBE6F0;
+      box-shadow: 0 18px 30px rgba(42, 0, 68, 0.12);
+      font-size: 17px;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-8px);
+      transition: opacity 0.2s ease, transform 0.2s ease, visibility 0.2s;
+    }
+    .bv-menu.is-open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .bv-link {
+      padding: 15px 4px;
+      border-bottom: 1px solid #F1EAF7;
+    }
+    .bv-cta {
+      margin-top: 16px;
+      text-align: center;
+      padding: 15px 20px;
+      font-size: 16px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .bv-menu, .bv-burger span { transition: none; }
+  }
+</style>
+
+<script>
+  const burger = document.querySelector<HTMLButtonElement>('.bv-burger');
+  const menu = document.getElementById('bv-menu');
+
+  if (burger && menu) {
+    const setOpen = (open: boolean) => {
+      menu.classList.toggle('is-open', open);
+      burger.setAttribute('aria-expanded', String(open));
+      burger.setAttribute('aria-label', open ? 'Cerrar menú' : 'Abrir menú');
+    };
+
+    burger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      setOpen(!menu.classList.contains('is-open'));
+    });
+    // Cierra al elegir una opción
+    menu.querySelectorAll('a').forEach((a) => a.addEventListener('click', () => setOpen(false)));
+    // Cierra al tocar fuera del menú
+    document.addEventListener('click', (e) => {
+      if (menu.classList.contains('is-open') && !menu.contains(e.target as Node)) setOpen(false);
+    });
+    // Cierra con Escape y devuelve el foco al botón
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && menu.classList.contains('is-open')) {
+        setOpen(false);
+        burger.focus();
+      }
+    });
+    // Si se agranda la pantalla a escritorio, se resetea
+    matchMedia('(min-width: 1025px)').addEventListener('change', (m) => { if (m.matches) setOpen(false); });
+  }
+</script>
