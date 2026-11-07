@@ -1,0 +1,48 @@
+<div id="bv-lb" role="dialog" aria-modal="true" aria-label="Imagen ampliada" hidden style="position: fixed; inset: 0; z-index: 60; background: rgba(20,0,31,0.88); align-items: center; justify-content: center; padding: 20px">
+<div style="position: relative; display: flex; flex-direction: column; align-items: center; gap: 14px; max-width: 760px; width: 100%">
+<button type="button" id="bv-lb-close" aria-label="Cerrar" style="align-self: flex-end; cursor: pointer; width: 44px; height: 44px; border-radius: 50%; border: 0; background: #FFFFFF; color: #2A0044; display: flex; align-items: center; justify-content: center">
+<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"></path></svg>
+</button>
+<img id="bv-lb-img" src alt="" style="display: block; max-width: 100%; max-height: 78vh; width: auto; border-radius: 16px">
+<p style="margin: 0; color: #FFFFFF; font-size: 16px; font-weight: 700"><span id="bv-lb-name"></span> <span id="bv-lb-kind" style="font-weight: 400; color: #CFC4DA"></span></p>
+</div>
+</div>
+
+<script>
+  // Visor de imágenes para la galería de Branding y "Más proyectos".
+  const lb = document.getElementById('bv-lb') as HTMLElement;
+  const img = document.getElementById('bv-lb-img') as HTMLImageElement;
+  const nm = document.getElementById('bv-lb-name') as HTMLElement;
+  const kd = document.getElementById('bv-lb-kind') as HTMLElement;
+  const closeBtn = document.getElementById('bv-lb-close') as HTMLButtonElement;
+  let last: HTMLElement | null = null;
+
+  function open(btn: HTMLElement) {
+    last = btn;
+    const name = btn.dataset.lbName ?? '';
+    const kind = btn.dataset.lbKind ?? '';
+    img.src = btn.dataset.lbSrc ?? '';
+    img.alt = `${name}, ${kind}`;
+    nm.textContent = name;
+    kd.textContent = `· ${kind}`;
+    lb.hidden = false;
+    lb.style.display = 'flex';
+    closeBtn.focus();
+  }
+  function close() {
+    lb.hidden = true;
+    lb.style.display = 'none';
+    last?.focus();
+  }
+  document.querySelectorAll<HTMLElement>('[data-lb-src]').forEach((b) => b.addEventListener('click', () => open(b)));
+  closeBtn.addEventListener('click', close);
+  lb.addEventListener('click', (e) => { if (e.target === lb) close(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape' && !lb.hidden) close(); });
+
+  // El enlace "Aviso de privacidad" del pie despliega el aviso.
+  document.querySelectorAll('a[href="#privacidad"]').forEach((a) =>
+    a.addEventListener('click', () => {
+      (document.getElementById('bv-aviso') as HTMLDetailsElement).open = true;
+    }),
+  );
+</script>

@@ -1,0 +1,25 @@
+{
+  "title": "Brand Vibe Crafters | Agencia de marketing digital en Cartagena",
+  "description": "Agencia de marketing digital en Cartagena, Colombia. Estrategia, manejo de redes sociales, branding, producción audiovisual y desarrollo web. Siéntate a La Mesa con nosotros.",
+  "ogTitle": "Brand Vibe Crafters Media Team",
+  "ogDescription": "Construimos el posicionamiento que tu marca necesita. Agencia de marketing digital en Cartagena, Colombia.",
+  "ogImage": "/assets/paula-hero-sofa.jpg",
+  "ogImageAlt": "Paula Ospina, CEO y directora creativa de Brand Vibe Crafters",
+  "indexable": true,
+  "googleSiteVerification": "",
+  "bingSiteVerification": "",
+  "ga4Id": "",
+  "founder": "Paula Ospina",
+  "founderRole": "CEO y directora creativa",
+  "streetAddress": "",
+  "postalCode": "",
+  "latitude": "",
+  "longitude": "",
+  "googleMapsUrl": "",
+  "areaServed": ["Cartagena", "Colombia"],
+  "openingHours": [
+    { "days": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"], "opens": "08:00", "closes": "18:00" },
+    { "days": ["Saturday"], "opens": "09:00", "closes": "12:00" }
+  ],
+  "sameAs": ["https://www.instagram.com/brandvibec/", "https://www.instagram.com/paulaospinab/"]
+}

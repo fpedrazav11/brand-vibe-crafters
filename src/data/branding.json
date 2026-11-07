@@ -1,0 +1,57 @@
+{
+  "kicker": "Portafolio",
+  "title": "Branding y diseño que se reconoce de lejos",
+  "intro": "Del logo a la línea gráfica completa: identidades pensadas para que tu negocio sea memorable. Toca cada proyecto para verlo en grande.",
+  "items": [
+    {
+      "src": "/assets/rebranding-colombia-travel.jpg",
+      "name": "Colombia Travel",
+      "kind": "Rebranding"
+    },
+    {
+      "src": "/assets/branding-villa-sofi.jpg",
+      "name": "Criadero Villa Sofi",
+      "kind": "Branding"
+    },
+    {
+      "src": "/assets/branding-dra-luisa-osorio.jpg",
+      "name": "Dra. Luisa Osorio",
+      "kind": "Branding"
+    },
+    {
+      "src": "/assets/branding-visa-travel.jpg",
+      "name": "Visa & Travel",
+      "kind": "Branding"
+    },
+    {
+      "src": "/assets/branding-oasis.jpg",
+      "name": "Oasis",
+      "kind": "Branding"
+    },
+    {
+      "src": "/assets/branding-samudio-studio.jpg",
+      "name": "Samudio Studio",
+      "kind": "Branding"
+    },
+    {
+      "src": "/assets/branding-dra-katherine-giraldo.jpg",
+      "name": "Dra. Katherine Giraldo",
+      "kind": "Branding"
+    },
+    {
+      "src": "/assets/branding-aei.jpg",
+      "name": "AeI",
+      "kind": "Branding"
+    },
+    {
+      "src": "/assets/branding-algiesthetic.jpg",
+      "name": "Algiesthetic",
+      "kind": "Branding"
+    },
+    {
+      "src": "/assets/menu-terraza-torre-reloj-portada.jpg",
+      "name": "Terraza Torre del Reloj",
+      "kind": "Diseño de menú"
+    }
+  ]
+}

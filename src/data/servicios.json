@@ -1,0 +1,47 @@
+{
+  "kicker": "Lo que hacemos",
+  "title": "Nuestros servicios",
+  "intro": "Escuchamos tus necesidades, entendemos tus objetivos y, junto a ti, convertimos cada idea en una realidad. Todo bajo un mismo techo.",
+  "items": [
+    {
+      "title": "Producción audiovisual",
+      "text": "Capturamos la esencia de tu marca con fotografía, video y tomas con dron.",
+      "icon": "camara"
+    },
+    {
+      "title": "Branding",
+      "text": "Construimos una identidad visual sólida: del logo a la línea gráfica que hace memorable tu negocio.",
+      "icon": "estrella"
+    },
+    {
+      "title": "Manejo de redes sociales",
+      "text": "Estrategia, parrilla, producción y comunidad, con membresías para cada momento de tu marca.",
+      "icon": "movil"
+    },
+    {
+      "title": "Desarrollo web",
+      "text": "Sitios funcionales y responsivos, pensados para convertir visitantes en clientes.",
+      "icon": "codigo"
+    },
+    {
+      "title": "Edición multimedia",
+      "text": "Edición profesional que da ritmo, claridad y coherencia a cada pieza audiovisual.",
+      "icon": "video"
+    },
+    {
+      "title": "Pautas digitales",
+      "text": "Campañas optimizadas para llegar a quien debe verte, con una inversión estratégica.",
+      "icon": "capas"
+    },
+    {
+      "title": "Edición gráfica",
+      "text": "Piezas visuales que atraen, conectan y fortalecen el posicionamiento de tu marca.",
+      "icon": "diana"
+    },
+    {
+      "title": "Consultoría de marketing",
+      "text": "Diagnóstico y planes de acción concretos para crecer de forma sostenible. Incluye asesorías 1:1.",
+      "icon": "brujula"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "kicker": "Cómo trabajamos",
+  "title": "El paso a paso del Éxito digital BV",
+  "text": "Un proceso con tiempos claros, para que siempre sepas qué viene y cuándo. El contenido se trabaja por etapas: atraer, conectar y convertir.",
+  "resultsTitle": "Al terminar los primeros 3 meses medimos:",
+  "results": [
+    "Más visibilidad en línea",
+    "Tráfico hacia tu web",
+    "Leads que se convierten en clientes",
+    "Interacción real en redes",
+    "Una mejor experiencia para tu usuario"
+  ],
+  "steps": [
+    {
+      "title": "Reunión de reconocimiento",
+      "text": "Escuchamos tu negocio y personalizamos el paquete a tu necesidad.",
+      "badge": "45 minutos"
+    },
+    {
+      "title": "Brief y diagnóstico",
+      "text": "Auditamos tu cuenta y optimizamos tu perfil desde el primer mes.",
+      "badge": ""
+    },
+    {
+      "title": "Estrategia y plan de redes",
+      "text": "Definimos mensajes clave, plan de contenidos y plan de fotos.",
+      "badge": ""
+    },
+    {
+      "title": "Parrilla de contenidos",
+      "text": "Te entregamos la parrilla y tienes 2 días hábiles para pedir ajustes.",
+      "badge": "5 días hábiles"
+    },
+    {
+      "title": "Producción",
+      "text": "Diseño en 3 días hábiles, fotografía en 5 y video en 8, con rondas de ajustes claras.",
+      "badge": "3 a 8 días"
+    },
+    {
+      "title": "¡Salida a redes!",
+      "text": "Publicamos, gestionamos la cuenta y acompañamos a tu comunidad.",
+      "badge": ""
+    },
+    {
+      "title": "Reporte mensual",
+      "text": "Reunión virtual a fin de mes: métricas, aprendizajes y proyección.",
+      "badge": "Cada mes"
+    },
+    {
+      "title": "Informe trimestral",
+      "text": "Cerramos el ciclo con resultados y definimos los siguientes pasos.",
+      "badge": "Cada 3 meses"
+    }
+  ]
+}

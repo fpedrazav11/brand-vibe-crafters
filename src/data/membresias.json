@@ -1,0 +1,87 @@
+{
+  "kicker": "Membresías 2026",
+  "title": "Manejo integral de redes, a la medida de tu momento",
+  "intro": "Paquetes base que personalizamos contigo en una reunión de reconocimiento de 45 minutos.",
+  "items": [
+    {
+      "category": "Producción",
+      "name": "¡Crea contenido!",
+      "text": "Para empresas que necesitan contenido que haga stop al scroll.",
+      "features": [
+        "Diagnóstico y optimización SEO del perfil",
+        "Parrilla, captions y dirección creativa",
+        "Hasta 6 reels de menos de un minuto",
+        "Hasta 25 fotos profesionales",
+        "Se puede tomar por un solo mes"
+      ],
+      "excludes": "No incluye community manager activo, diseño gráfico ni pauta.",
+      "featured": false,
+      "badge": ""
+    },
+    {
+      "category": "Estrategia",
+      "name": "Membresía B",
+      "text": "Estrategia y diseño con el material que ya tienes.",
+      "features": [
+        "Diagnóstico y optimización del perfil",
+        "Estrategia, parrilla y captions",
+        "Hasta 8 publicaciones al mes (2 videos y 6 diseños)",
+        "Hasta 10 historias diseñadas",
+        "1 red social"
+      ],
+      "excludes": "No incluye producción audiovisual, community management activo ni pauta.",
+      "featured": false,
+      "badge": ""
+    },
+    {
+      "category": "Estrategia + video",
+      "name": "Membresía V",
+      "text": "Tu marca activa todos los días, con producción de video.",
+      "features": [
+        "Todo lo de la B, más dirección creativa",
+        "Hasta 8 publicaciones, 2 carruseles y 5 posts diseñados",
+        "1 producción de video profesional al mes",
+        "2 a 3 historias diarias, 5 días a la semana",
+        "Community manager activa y 3 visitas al mes",
+        "Reporte con análisis trimestral"
+      ],
+      "excludes": "No incluye pauta ni sesión de fotografía profesional.",
+      "featured": false,
+      "badge": ""
+    },
+    {
+      "category": "Integral",
+      "name": "Membresía BV",
+      "text": "El equipo completo trabajando para tu marca.",
+      "features": [
+        "Hasta 12 publicaciones al mes",
+        "20 historias y 4 carruseles diseñados",
+        "Producción de video y sesión de fotografía profesional",
+        "2 a 3 historias diarias, 5 días a la semana",
+        "4 visitas al mes: videógrafo, fotógrafa y community manager",
+        "Reporte con análisis trimestral"
+      ],
+      "excludes": "No incluye gestión de pauta.",
+      "featured": true,
+      "badge": "La más completa"
+    }
+  ],
+  "notes": [
+    {
+      "bold": "Permanencia mínima de 3 meses.",
+      "text": "¡Crea contenido! puede tomarse por un solo mes."
+    },
+    {
+      "bold": "Reunión mensual de métricas",
+      "text": "incluida en todas las membresías."
+    },
+    {
+      "bold": "Pauta digital aparte:",
+      "text": "se cotiza como un porcentaje de la inversión."
+    },
+    {
+      "bold": "Acuerdo firmado",
+      "text": "de prestación de servicios y pago al iniciar."
+    }
+  ]
+}

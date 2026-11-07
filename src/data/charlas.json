@@ -1,0 +1,22 @@
+{
+  "kicker": "Charlas y formación",
+  "title": "Compartimos lo que sabemos",
+  "text": "Paula lleva su experiencia a empresas, universidades y colegios con charlas habladas e interactivas sobre Instagram, marca personal y estrategia. Sin fórmulas genéricas: actividades que la gente recuerda.",
+  "tags": [
+    "Que te conozcan",
+    "Que te elijan",
+    "Que te recuerden"
+  ],
+  "ctaLabel": "Invita a Paula a tu evento",
+  "ctaMessage": "Hola, Paula. Me gustaría invitarte a dar una charla.",
+  "images": [
+    {
+      "src": "/assets/charla-1.jpg",
+      "alt": "Paula dictando la charla Manejo integral de Instagram"
+    },
+    {
+      "src": "/assets/charla-2.jpg",
+      "alt": "Paula explicando cómo funciona Instagram en 2026 durante su charla"
+    }
+  ]
+}

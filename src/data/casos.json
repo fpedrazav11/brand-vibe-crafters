@@ -1,0 +1,138 @@
+{
+  "kicker": "Casos de éxito",
+  "title": "Marcas que hoy se ven como siempre debieron verse",
+  "items": [
+    {
+      "tab": "Lentino Legal & Asociados",
+      "video": "/assets/vid-lentino.mp4",
+      "poster": "/assets/vid-lentino-poster.jpg",
+      "logo": "/assets/cl-lentino.png",
+      "logoAlt": "Lentino Legal & Asociados",
+      "kicker": "Rebranding + manejo integral de redes",
+      "title": "Lentino Legal & Asociados",
+      "text": "Sus clientes ya llamaban a la firma por el apellido de su socio director. Evolucionamos ALR Soluciones Legales a Lentino Legal & Asociados sin perder su posicionamiento boutique, y hoy llevamos su comunicación de punta a punta: estrategia, video corporativo y fotografía.",
+      "tags": [
+        "Rebranding",
+        "Manejo integral",
+        "Video corporativo",
+        "Fotografía"
+      ],
+      "highlight": {
+        "big": "De ALR a Lentino",
+        "text": "Evolucionar no es borrar: es afinar lo que ya te hace reconocible."
+      },
+      "gallery": [
+        {
+          "src": "/assets/le-retrato.jpg",
+          "alt": "Retrato del socio director de Lentino Legal & Asociados"
+        },
+        {
+          "src": "/assets/le-sala.jpg",
+          "alt": "Equipo de Lentino reunido en la sala de juntas"
+        },
+        {
+          "src": "/assets/le-lectura.jpg",
+          "alt": "Socio director leyendo en su oficina"
+        }
+      ]
+    },
+    {
+      "tab": "Dra. Mile Quintero",
+      "video": "/assets/vid-dramile.mp4",
+      "poster": "/assets/vid-dramile-poster.jpg",
+      "logo": "/assets/cl-dramile.png",
+      "logoAlt": "Dra. Mile Quintero",
+      "kicker": "Manejo integral de redes",
+      "title": "Dra. Mile Quintero",
+      "text": "Cirujana plástica estética y reconstructiva. Reorganizamos su perfil (biografía, historias destacadas y línea visual) y producimos contenido en quirófano que educa y genera confianza. Y aunque su cuenta muestra resultados quirúrgicos reales, Instagram nunca la ha restringido: sabemos mostrar lo sensible sin romper las reglas.",
+      "tags": [
+        "Estrategia",
+        "Optimización de perfil",
+        "Producción en quirófano",
+        "Contenido sensible"
+      ],
+      "highlight": {
+        "big": "+1.849",
+        "text": "seguidores con crecimiento 100 % orgánico, sin pauta: de 7.852 a 9.701."
+      }
+    },
+    {
+      "tab": "Pediatrium",
+      "video": "/assets/vid-pediatrium.mp4",
+      "poster": "/assets/vid-pediatrium-poster.jpg",
+      "logo": "/assets/cl-pediatrium.png",
+      "logoAlt": "Pediatrium",
+      "kicker": "Manejo integral de redes",
+      "title": "Pediatrium",
+      "text": "El ecosistema pediátrico de la Dra. Pilar Hoyos. Contenido educativo con la doctora a cámara y piezas de apoyo con un tono cálido y cercano para las familias.",
+      "tags": [
+        "Estrategia",
+        "Contenido educativo",
+        "Video"
+      ]
+    },
+    {
+      "tab": "D'Neyla",
+      "video": "/assets/vid-dneyla.mp4",
+      "poster": "/assets/vid-dneyla-poster.jpg",
+      "logo": "/assets/cl-dneyla.png",
+      "logoAlt": "D'Neyla",
+      "kicker": "Manejo integral de redes",
+      "title": "D'Neyla",
+      "text": "Repostería con tradición desde 1995. Encontramos una identidad de feed en rosa y rojo que se reconoce de un vistazo, con campañas por temporada como Amor y Amistad y Halloween.",
+      "tags": [
+        "Estrategia",
+        "Fotografía de producto",
+        "Reels",
+        "Campañas"
+      ],
+      "highlight": {
+        "big": "11,8 mil → 12,5 mil",
+        "text": "seguidores en Instagram"
+      },
+      "gallery": [
+        {
+          "src": "/assets/dneyla-amor-amistad.jpg",
+          "alt": "Pieza de Amor y Amistad de D'Neyla"
+        },
+        {
+          "src": "/assets/dneyla-cumples-octubre.jpg",
+          "alt": "Pieza ¿Cumples en octubre? de D'Neyla"
+        },
+        {
+          "src": "/assets/dneyla-tarde-perfecta.jpg",
+          "alt": "Pieza Tarde perfecta, final dulce de D'Neyla"
+        }
+      ]
+    },
+    {
+      "tab": "Calamar Ink",
+      "video": "/assets/vid-calamar.mp4",
+      "poster": "/assets/vid-calamar-poster.jpg",
+      "logo": "/assets/cl-calamar.png",
+      "logoAlt": "Calamar Ink",
+      "kicker": "Producción de foto y video",
+      "title": "Calamar Ink",
+      "text": "Retratamos el oficio: el estudio, las manos y el trazo. Producción audiovisual y fotográfica para un estudio de tatuajes con carácter propio.",
+      "tags": [
+        "Fotografía",
+        "Video",
+        "Dirección creativa"
+      ],
+      "gallery": [
+        {
+          "src": "/assets/ci-estudio.jpg",
+          "alt": "Estudio de Calamar Ink"
+        },
+        {
+          "src": "/assets/ci-trazo.jpg",
+          "alt": "Tatuadora de Calamar Ink trabajando un trazo"
+        },
+        {
+          "src": "/assets/ci-aguja.jpg",
+          "alt": "Detalle de la aguja sobre el trazo"
+        }
+      ]
+    }
+  ]
+}

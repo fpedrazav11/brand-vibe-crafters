@@ -1,0 +1,41 @@
+---
+import data from '../data/proyectos.json';
+---
+<section id="proyectos" style="background: #F6F3F9">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 40px); display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px">
+<div style="flex: 1 1 520px; min-width: 0">
+<p style="margin: 0 0 12px; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #7678ED">{data.kicker}</p>
+<h2 style="margin: 0; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.1; font-weight: 800; color: #2A0044">{data.title}</h2>
+</div>
+<p style="flex: 1 1 360px; min-width: 0; margin: 0; font-size: 17px; line-height: 1.6; color: #50514F">{data.intro}</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 480px), 1fr)); gap: 22px">
+{data.items.map((p) => (
+<article style="background: #FFFFFF; border-radius: 24px; padding: clamp(20px, 2.4vw, 28px); display: flex; flex-direction: column; gap: 18px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 16px">
+{p.logo && <div style="flex: 0 0 auto; width: 96px; height: 64px; display: flex; align-items: center; justify-content: center"><img src={p.logo} alt={p.name} loading="lazy" style="max-width: 96px; max-height: 60px; width: auto; display: block"></div>}
+<div style="min-width: 0; flex: 1 1 200px">
+<h3 style="margin: 0; font-size: 22px; font-weight: 800; color: #2A0044">{p.name}</h3>
+<p style="margin: 4px 0 0; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #7678ED">{p.kind}</p>
+</div>
+</div>
+<p style="margin: 0; font-size: 15.5px; line-height: 1.65; color: #50514F">{p.text}</p>
+{p.images.length > 0 && (
+<div style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px">
+{p.images.map((im) => (
+<button type="button" class="bv-tile" data-lb-src={im.src} data-lb-name={p.name} data-lb-kind={im.alt} aria-label={`Ver en grande: ${im.alt}`} style="cursor: pointer; padding: 0; border: 0; border-radius: 12px; overflow: hidden; aspect-ratio: 3 / 4; background: #F1EAF7">
+<img src={im.src} alt={im.alt} loading="lazy" decoding="async" style="width: 100%; height: 100%; object-fit: cover; display: block">
+</button>
+))}
+</div>
+)}
+{p.url && (
+<a href={p.url} target="_blank" rel="noopener" style="align-self: flex-start; display: inline-flex; align-items: center; gap: 8px; font-size: 15px; font-weight: 700; color: #3A015C; text-decoration: none; padding: 10px 18px; border-radius: 999px; border: 1.5px solid #3A015C">Ver sitio web
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"></path></svg></a>
+)}
+</article>
+))}
+</div>
+</div>
+</section>

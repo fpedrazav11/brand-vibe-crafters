@@ -1,0 +1,20 @@
+{
+  "kicker": "Testimonios",
+  "title": "Lo que dicen nuestros clientes",
+  "items": [
+    {
+      "quote": "Al principio todo quedó claro y ella captó la idea. Está pendiente de todo, entonces me siento muy tranquila: hoy maneja toda la cuenta y tiene mi total confianza.",
+      "name": "Dra. Mile Quintero",
+      "role": "Cirujana plástica estética y reconstructiva",
+      "video": "/assets/testimonio-dra-mile.mp4",
+      "poster": "/assets/testimonio-dra-mile-poster.jpg"
+    },
+    {
+      "quote": "Necesitaba a alguien que no solamente supiera editar, sino que también fuera muy estratégico. El crecimiento de Pediatrium definitivamente ha sido de la mano de ustedes.",
+      "name": "Dra. Pilar Hoyos",
+      "role": "Pediatra y fundadora de Pediatrium",
+      "video": "/assets/testimonio-dra-pilar.mp4",
+      "poster": "/assets/testimonio-dra-pilar-poster.jpg"
+    }
+  ]
+}

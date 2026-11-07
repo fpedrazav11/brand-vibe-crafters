@@ -1,0 +1,43 @@
+---
+import data from '../data/membresias.json';
+import { wa } from '../data/site';
+---
+<section id="membresias" style="background: #F6F3F9">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 40px); display: flex; flex-direction: column; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 780px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #7678ED">{data.kicker}</p>
+<h2 style="margin: 0; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.1; font-weight: 800; color: #2A0044">{data.title}</h2>
+<p style="margin: 0; font-size: 17px; line-height: 1.6; color: #50514F">{data.intro}</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(255px, 1fr)); gap: 20px; align-items: stretch">
+{data.items.map((m) => {
+  const f = m.featured;
+  return (
+<article class="bv-card" style={`position: relative; display: flex; flex-direction: column; gap: 18px; border-radius: 24px; padding: 30px 26px; ${f ? 'background: #3A015C; color: #FFFFFF; border: 1.5px solid rgba(255,255,255,0.18)' : 'background: #FFFFFF; color: #1E1B22; border: 1.5px solid #E4DDEB'}`}>
+{m.badge && <span style="position: absolute; top: -13px; left: 26px; background: #59C3C3; color: #2A0044; font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase; padding: 6px 12px; border-radius: 999px">{m.badge}</span>}
+<div>
+<p style={`margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: ${f ? '#59C3C3' : '#7678ED'}`}>{m.category}</p>
+<h3 style="margin: 6px 0 0; font-size: 26px; font-weight: 800">{m.name}</h3>
+<p style="margin: 10px 0 0; font-size: 15px; line-height: 1.55; opacity: 0.9">{m.text}</p>
+</div>
+<ul style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 10px; flex: 1 1 auto">
+{m.features.map((x) => (
+<li style="display: flex; gap: 10px; font-size: 14.5px; line-height: 1.5">
+<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style={`flex: 0 0 auto; margin-top: 2px; color: ${f ? '#59C3C3' : '#3A015C'}`}><path d="M20 6 9 17l-5-5"></path></svg>
+<span>{x}</span>
+</li>
+))}
+</ul>
+{m.excludes && <p style="margin: 0; font-size: 13px; line-height: 1.5; opacity: 0.8">{m.excludes}</p>}
+<div style={`border-top: 1px solid ${f ? 'rgba(255,255,255,0.18)' : '#E4DDEB'}; padding-top: 16px; display: flex; flex-direction: column; gap: 14px`}>
+<a class="bv-btn" href={wa(`Hola, Brand Vibe. Me interesa la ${m.name} y quiero agendar la reunión de reconocimiento.`)} target="_blank" rel="noopener" style={`text-align: center; font-weight: 700; font-size: 15px; padding: 13px 18px; border-radius: 999px; text-decoration: none; ${f ? 'background: #59C3C3; color: #2A0044' : 'background: #3A015C; color: #FFFFFF'}`}>Quiero la {m.name}</a>
+</div>
+</article>
+  );
+})}
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 14px 28px; font-size: 14.5px; line-height: 1.55; color: #50514F">
+{data.notes.map((n) => <p style="margin: 0"><strong style="color: #2A0044">{n.bold}</strong> {n.text}</p>)}
+</div>
+</div>
+</section>

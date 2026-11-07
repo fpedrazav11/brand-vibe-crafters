@@ -1,0 +1,107 @@
+{
+  "kicker": "Más proyectos",
+  "title": "Marcas que crecieron con nosotros",
+  "intro": "Rebranding, fotografía, páginas web y diseño: proyectos completos de principio a fin.",
+  "items": [
+    {
+      "name": "Liriel Jewelry",
+      "logo": "/assets/lc-liriel.png",
+      "kind": "Rebranding, fotografía y página web",
+      "text": "Renovamos su identidad en azul y dorado, produjimos la fotografía de producto y construimos su tienda en línea.",
+      "images": [
+        {
+          "src": "/assets/li-1.jpg",
+          "alt": "Tienda en línea de Liriel Jewelry"
+        },
+        {
+          "src": "/assets/li-2.jpg",
+          "alt": "Anillo de Liriel en su estuche azul"
+        },
+        {
+          "src": "/assets/li-3.jpg",
+          "alt": "Collares de Liriel en plata y oro"
+        },
+        {
+          "src": "/assets/li-4.jpg",
+          "alt": "Estuche de Liriel sobre la arena"
+        }
+      ],
+      "url": "https://lirieljewelry.com/"
+    },
+    {
+      "name": "Pets & Me",
+      "logo": "/assets/lc-petsme.png",
+      "kind": "Branding, fotografía de producto y piezas gráficas",
+      "text": "Accesorios para mascotas. Creamos su marca, fotografiamos sus productos con sus modelos de cuatro patas y diseñamos sus posts e historias.",
+      "images": [
+        {
+          "src": "/assets/pm-1.jpg",
+          "alt": "Post de Pets & Me: situación sentimental"
+        },
+        {
+          "src": "/assets/pm-2.jpg",
+          "alt": "Fotografía de producto de Pets & Me con bandana"
+        },
+        {
+          "src": "/assets/pm-3.jpg",
+          "alt": "Post de Pets & Me: collar premium"
+        },
+        {
+          "src": "/assets/pm-4.jpg",
+          "alt": "Collares de Pets & Me"
+        }
+      ],
+      "url": ""
+    },
+    {
+      "name": "Ferrum Constructora",
+      "logo": "/assets/lc-ferrum.png",
+      "kind": "Fotografía, video y manejo integral",
+      "text": "Retratamos sus proyectos con fotografía y video arquitectónico, y manejamos sus redes durante tres meses.",
+      "images": [
+        {
+          "src": "/assets/fe-1.jpg",
+          "alt": "Piscina y jacuzzi de un proyecto de Ferrum"
+        },
+        {
+          "src": "/assets/fe-2.jpg",
+          "alt": "Vista desde la palapa de un proyecto de Ferrum"
+        },
+        {
+          "src": "/assets/fe-3.jpg",
+          "alt": "Pérgola de madera de un proyecto de Ferrum"
+        },
+        {
+          "src": "/assets/fe-4.jpg",
+          "alt": "Zona social con palapa de un proyecto de Ferrum"
+        }
+      ],
+      "url": ""
+    },
+    {
+      "name": "Pet Loveli",
+      "logo": "/assets/lc-petloveli.png",
+      "kind": "Diseño gráfico",
+      "text": "Consultorio veterinario. Diseñamos sus posts e historias con una línea gráfica en rosa que informa y acompaña a quienes cuidan a sus mascotas.",
+      "images": [
+        {
+          "src": "/assets/pl-1.jpg",
+          "alt": "Post de servicios de Pet Loveli"
+        },
+        {
+          "src": "/assets/pl-2.jpg",
+          "alt": "Post de Pet Loveli: prevenir es amar"
+        },
+        {
+          "src": "/assets/pl-3.jpg",
+          "alt": "Historia de Pet Loveli: paseos seguros"
+        },
+        {
+          "src": "/assets/pl-4.jpg",
+          "alt": "Historia de Pet Loveli sobre esterilización"
+        }
+      ],
+      "url": ""
+    }
+  ]
+}

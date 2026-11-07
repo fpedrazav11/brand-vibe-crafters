@@ -1,0 +1,19 @@
+{
+  "kicker": "Nuestra diferencia",
+  "title": "Cumplimos lo que prometemos, en el tiempo que prometemos.",
+  "text": "Escuchamos tus necesidades, entendemos tus objetivos y, junto a ti, convertimos cada idea en una realidad. No solo creamos estrategias: construimos el camino para que tu marca se posicione y crezca de manera sostenible.",
+  "items": [
+    {
+      "text": "Fechas claras desde el primer día",
+      "icon": "calendario"
+    },
+    {
+      "text": "Rondas de ajustes definidas, sin sorpresas",
+      "icon": "ajustes"
+    },
+    {
+      "text": "Reunión mensual para que siempre sepas en qué va tu marca",
+      "icon": "grafica"
+    }
+  ]
+}

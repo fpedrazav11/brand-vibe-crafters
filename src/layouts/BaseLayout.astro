@@ -1,0 +1,89 @@
+---
+import '../styles/global.css';
+import { site, seo } from '../data/site';
+import hero from '../data/hero.json';
+import { buildSchema } from '../lib/schema';
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+  schema?: boolean;
+}
+const { title = seo.title, description = seo.description, noindex = false, schema = true } = Astro.props;
+
+const siteUrl = Astro.site!;
+const canonical = new URL(Astro.url.pathname, siteUrl);
+const ogImage = new URL(seo.ogImage || hero.image, siteUrl);
+
+// En Netlify, CONTEXT = production | deploy-preview | branch-deploy.
+// Solo producción se indexa, para que Google no rastree versiones de prueba.
+const context = process.env.CONTEXT ?? 'production';
+const indexable = seo.indexable && !noindex && context === 'production';
+const robots = indexable
+  ? 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'
+  : 'noindex, nofollow';
+const jsonLd = schema ? JSON.stringify(buildSchema(siteUrl, canonical, title, description)) : '';
+---
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content={robots} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="es-CO" href={canonical} />
+    <link rel="alternate" hreflang="x-default" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:title" content={seo.ogTitle || title} />
+    <meta property="og:description" content={seo.ogDescription || description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content={seo.ogImageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seo.ogTitle || title} />
+    <meta name="twitter:description" content={seo.ogDescription || description} />
+    <meta name="twitter:image" content={ogImage} />
+    <meta name="twitter:image:alt" content={seo.ogImageAlt} />
+
+    <meta name="theme-color" content="#3A015C" />
+    <meta name="author" content={site.name} />
+    <meta name="format-detection" content="telephone=no" />
+    {seo.googleSiteVerification && <meta name="google-site-verification" content={seo.googleSiteVerification} />}
+    {seo.bingSiteVerification && <meta name="msvalidate.01" content={seo.bingSiteVerification} />}
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <link rel="sitemap" type="application/xml" href="/sitemap-index.xml" />
+    <link rel="preload" href="/assets/gotham-book.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href="/assets/gotham-black.woff2" as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={hero.image} as="image" fetchpriority="high" />
+
+    {jsonLd && <script type="application/ld+json" set:html={jsonLd} />}
+
+    {seo.ga4Id && indexable && (
+      <>
+        <script async src={`https://www.googletagmanager.com/gtag/js?id=${seo.ga4Id}`}></script>
+        <script is:inline define:vars={{ id: seo.ga4Id }}>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', id);
+          // Cada clic en WhatsApp o correo se registra como conversión (evento generate_lead).
+          document.addEventListener('click', function (e) {
+            var a = e.target.closest && e.target.closest('a[href*="wa.me"], a[href^="mailto:"]');
+            if (a) gtag('event', 'generate_lead', { method: a.href.indexOf('wa.me') > -1 ? 'whatsapp' : 'email', link_text: (a.textContent || '').trim().slice(0, 80) });
+          });
+        </script>
+      </>
+    )}
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>

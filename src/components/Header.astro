@@ -1,0 +1,19 @@
+---
+import { site, wa } from '../data/site';
+const links = [
+  ['#servicios', 'Servicios'],
+  ['#casos', 'Casos'],
+  ['#membresias', 'Membresías'],
+  ['#metodo', 'Cómo trabajamos'],
+  ['#nosotros', 'Nosotros'],
+];
+---
+<header style="position: sticky; top: 0; z-index: 30; background: rgba(255,255,255,0.94); backdrop-filter: blur(10px); border-bottom: 1px solid #EBE6F0">
+<nav class="bv-nav" aria-label="Principal" style="max-width: 1240px; margin: 0 auto; padding: 14px clamp(16px, 4vw, 40px); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 28px">
+<a href="#inicio" aria-label={`${site.name}, inicio`} style="display: flex; align-items: center"><img src={site.logo} alt={site.tagline} width="160" height="50" style="height: 50px; width: auto; display: block"></a>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 6px 26px; font-size: 14px; font-weight: 500">
+{links.map(([href, label]) => <a href={href} style="color: #2A0044">{label}</a>)}
+<a class="bv-btn" href={wa(site.ctaMessage)} target="_blank" rel="noopener" style="color: #FFFFFF; background: #3A015C; padding: 11px 20px; border-radius: 999px; font-weight: 700">{site.ctaLabel}</a>
+</div>
+</nav>
+</header>

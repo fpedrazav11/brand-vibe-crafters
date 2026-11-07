@@ -1,0 +1,18 @@
+---
+import data from '../data/clientes.json';
+const clientes = data.items;
+// Se duplica la lista para que el carrusel infinito no tenga cortes.
+const loop = [...clientes, ...clientes];
+---
+<section aria-label={data.title} style="background: #FFFFFF; padding: 40px 0 34px; border-bottom: 1px solid #EBEBEB">
+<p style="margin: 0 0 22px; text-align: center; font-size: 13px; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; color: #50514F">{data.title}</p>
+<div style="overflow: hidden; width: 100%">
+<div class="bv-marquee" style="display: flex; width: max-content; align-items: center">
+{loop.map((c, i) => (
+<div style="flex: 0 0 auto; padding: 0 clamp(28px, 4vw, 56px); display: flex; align-items: center" aria-hidden={i >= clientes.length ? 'true' : undefined}>
+<img src={c.src} alt={i >= clientes.length ? '' : c.alt} style={`height: ${c.h || 64}px; width: auto; display: block`} />
+</div>
+))}
+</div>
+</div>
+</section>

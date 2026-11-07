@@ -1,0 +1,51 @@
+{
+  "kicker": "Detrás de Brand Vibe",
+  "name": "Paula Ospina",
+  "image": "/assets/paula-cafe.jpg",
+  "imageAlt": "Paula Ospina trabajando con un café junto a su portátil",
+  "paragraphs": [
+    "Comunicadora social y directora creativa. Antes de fundar Brand Vibe emprendió en cosmética, en el cuidado de mascotas y en el maquillaje profesional, y trabajó en dos agencias de Cartagena. Por eso entiende las marcas desde los dos lados: el de quien vende y el de quien comunica.",
+    "Hoy lidera un equipo de más de ocho especialistas, y más de 20 empresas han confiado en su acompañamiento estratégico y de contenido."
+  ],
+  "ctaLabel": "Agenda una asesoría 1:1",
+  "ctaMessage": "Hola, Paula. Quiero agendar una asesoría 1:1.",
+  "instagram": "paulaospinab",
+  "teamTitle": "El equipo",
+  "team": [
+    {
+      "name": "Paula Ospina",
+      "role": "Directora creativa y fundadora",
+      "photo": ""
+    },
+    {
+      "name": "Edgar Hernández",
+      "role": "Director de producción audiovisual",
+      "photo": ""
+    },
+    {
+      "name": "Randy Goez",
+      "role": "Videógrafo",
+      "photo": ""
+    },
+    {
+      "name": "Laura Arias",
+      "role": "Fotógrafa",
+      "photo": ""
+    },
+    {
+      "name": "Carolina Pérez",
+      "role": "Community manager",
+      "photo": ""
+    },
+    {
+      "name": "Fernando Pedraza",
+      "role": "Desarrollador",
+      "photo": ""
+    },
+    {
+      "name": "Daniela Ospina",
+      "role": "Asistente administrativa",
+      "photo": ""
+    }
+  ]
+}

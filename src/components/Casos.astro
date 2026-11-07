@@ -1,0 +1,92 @@
+---
+import data from '../data/casos.json';
+type Caso = (typeof data.items)[number] & {
+  highlight?: { big: string; text: string };
+  gallery?: { src: string; alt: string }[];
+};
+const items = data.items as Caso[];
+const tabOn = 'border: 1.5px solid #59C3C3; background: #59C3C3; color: #2A0044';
+const tabOff = 'border: 1.5px solid rgba(255,255,255,0.35); background: transparent; color: #FFFFFF';
+---
+<section id="casos" style="background: #2A0044; color: #FFFFFF">
+<div style="max-width: 1240px; margin: 0 auto; padding: clamp(64px, 8vw, 112px) clamp(16px, 4vw, 40px); display: flex; flex-direction: column; gap: 36px">
+<div style="display: flex; flex-direction: column; gap: 12px; max-width: 760px">
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #59C3C3">{data.kicker}</p>
+<h2 style="margin: 0; font-size: clamp(30px, 3.6vw, 46px); line-height: 1.1; font-weight: 800">{data.title}</h2>
+</div>
+<div role="tablist" aria-label="Casos" style="display: flex; flex-wrap: wrap; gap: 10px">
+{items.map((c, i) => (
+<button type="button" class="bv-tab" data-case={i} role="tab" id={`bv-tab-${i}`} aria-controls={`bv-case-${i}`} aria-selected={i === 0 ? 'true' : 'false'} style={`cursor: pointer; font-family: inherit; font-size: 15px; font-weight: 600; padding: 12px 20px; border-radius: 999px; ${i === 0 ? tabOn : tabOff}`}>{c.tab}</button>
+))}
+</div>
+{items.map((c, i) => (
+<div class="bv-case" data-case={i} id={`bv-case-${i}`} role="tabpanel" aria-labelledby={`bv-tab-${i}`} style={`display: ${i === 0 ? 'flex' : 'none'}; flex-wrap: wrap; gap: clamp(28px, 4vw, 56px); align-items: flex-start`}>
+<div style="flex: 0 1 320px; min-width: 240px; margin: 0 auto">
+<div style="position: relative; border-radius: 34px; padding: 10px; background: #14001F; box-shadow: 0 30px 60px rgba(0,0,0,0.35)">
+<video preload={i === 0 ? 'metadata' : 'none'} src={c.video} poster={c.poster} autoplay={i === 0} muted loop playsinline aria-label={`Video de ${c.tab}`} style="display: block; width: 100%; aspect-ratio: 9 / 16; object-fit: cover; border-radius: 26px; background: #000000"></video>
+</div>
+</div>
+<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 18px">
+<div style="background: #FFFFFF; border-radius: 18px; padding: 12px 16px; display: flex; align-items: center; justify-content: center; height: 64px">
+<img src={c.logo} alt={c.logoAlt} loading="lazy" style="max-height: 56px; max-width: 160px; width: auto; display: block" />
+</div>
+<div>
+<p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #59C3C3">{c.kicker}</p>
+<h3 style="margin: 4px 0 0; font-size: clamp(24px, 2.6vw, 32px); font-weight: 800">{c.title}</h3>
+</div>
+</div>
+<p style="margin: 0; font-size: 17px; line-height: 1.7; font-weight: 300; color: #E6DDF0">{c.text}</p>
+<div style="display: flex; flex-wrap: wrap; gap: 8px">
+{c.tags.map((t) => (
+<span style="font-size: 13px; font-weight: 600; padding: 7px 14px; border-radius: 999px; background: rgba(118,120,237,0.22); color: #FFFFFF">{t}</span>
+))}
+</div>
+{c.highlight && (
+<div style="display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 16px; background: rgba(89,195,195,0.12); border: 1px solid rgba(89,195,195,0.4); border-radius: 18px; padding: 18px 22px">
+<p style="margin: 0; font-size: clamp(28px, 3vw, 38px); font-weight: 800; color: #59C3C3">{c.highlight.big}</p>
+<p style="margin: 0; font-size: 15px; line-height: 1.5; color: #E6DDF0">{c.highlight.text}</p>
+</div>
+)}
+{c.gallery && (
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px">
+{c.gallery.map((g) => (
+<div class="bv-tile" style="border-radius: 16px; overflow: hidden; aspect-ratio: 4 / 5; background: #3A015C">
+<img src={g.src} alt={g.alt} loading="lazy" style="width: 100%; height: 100%; object-fit: cover; display: block" />
+</div>
+))}
+</div>
+)}
+</div>
+</div>
+))}
+</div>
+</section>
+
+<script>
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.bv-tab');
+  const panels = document.querySelectorAll<HTMLElement>('.bv-case');
+  function show(i: string) {
+    tabs.forEach((t) => {
+      const on = t.dataset.case === i;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.style.background = on ? '#59C3C3' : 'transparent';
+      t.style.color = on ? '#2A0044' : '#FFFFFF';
+      t.style.borderColor = on ? '#59C3C3' : 'rgba(255,255,255,0.35)';
+    });
+    panels.forEach((p) => {
+      const on = p.dataset.case === i;
+      p.style.display = on ? 'flex' : 'none';
+      const v = p.querySelector('video');
+      if (!v) return;
+      if (on) {
+        v.muted = true;
+        v.play()?.catch(() => {});
+      } else {
+        v.pause();
+      }
+    });
+  }
+  tabs.forEach((t) => t.addEventListener('click', () => show(t.dataset.case ?? '0')));
+  show('0');
+</script>
