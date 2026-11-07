@@ -1,0 +1,416 @@
+# Panel de edición de Brand Vibe Crafters (Decap CMS)
+# Cada vez que guardas, se crea un commit en GitHub y Netlify vuelve a publicar la web (1–2 min).
+
+backend:
+  name: github
+  repo: TU-USUARIO/brand-vibe-crafters   # ← cámbialo por tu usuario/repositorio de GitHub
+  branch: main
+  commit_messages:
+    create: 'Panel: crea {{collection}} "{{slug}}"'
+    update: 'Panel: actualiza {{collection}} "{{slug}}"'
+    delete: 'Panel: elimina {{collection}} "{{slug}}"'
+    uploadMedia: 'Panel: sube "{{path}}"'
+    deleteMedia: 'Panel: elimina "{{path}}"'
+
+# Para editar en tu computador sin GitHub: en una terminal `npx decap-server`, en otra `npm run dev`,
+# y abre http://localhost:4321/admin/
+local_backend: true
+
+locale: es
+site_url: /
+display_url: /
+logo_url: /assets/logo-bv-color.png
+media_folder: public/assets/uploads
+public_folder: /assets/uploads
+editor:
+  preview: false
+
+collections:
+  # ─────────────────────────── AJUSTES GENERALES ───────────────────────────
+  - name: ajustes
+    label: Ajustes generales
+    icon: settings
+    description: Datos de contacto, SEO y posicionamiento local.
+    files:
+      - name: site
+        label: Datos de la marca y contacto
+        file: src/data/site.json
+        format: json
+        fields:
+          - { name: name, label: Nombre comercial, widget: string }
+          - { name: tagline, label: Nombre largo / lema, widget: string }
+          - { name: legalName, label: Razón social, widget: string }
+          - { name: whatsapp, label: "WhatsApp (solo números, con indicativo: 57...)", widget: string, pattern: ['^[0-9]{10,15}$', 'Solo números, con indicativo de país'] }
+          - { name: whatsappDisplay, label: WhatsApp como se muestra, widget: string }
+          - { name: email, label: Correo, widget: string }
+          - { name: instagram, label: "Instagram de la marca (sin @)", widget: string }
+          - { name: city, label: Ciudad, widget: string }
+          - { name: region, label: Departamento, widget: string }
+          - { name: countryCode, label: Código de país, widget: string, hint: "CO para Colombia" }
+          - { name: countryName, label: País, widget: string }
+          - { name: logo, label: Logo a color, widget: image }
+          - { name: logoLight, label: Logo claro (fondos oscuros), widget: image }
+          - { name: ctaLabel, label: Texto del botón principal, widget: string }
+          - { name: ctaMessage, label: Mensaje de WhatsApp del botón principal, widget: text }
+
+      - name: seo
+        label: SEO y Google
+        file: src/data/seo.json
+        format: json
+        fields:
+          - { name: title, label: "Título SEO (máx. 60 caracteres)", widget: string, hint: "Lo que aparece en azul en Google. Incluye 'agencia de marketing digital' y 'Cartagena'." }
+          - { name: description, label: "Meta descripción (máx. 155 caracteres)", widget: text, hint: "El texto gris bajo el título en Google. Debe invitar al clic." }
+          - { name: ogTitle, label: Título al compartir en redes/WhatsApp, widget: string }
+          - { name: ogDescription, label: Descripción al compartir, widget: text }
+          - { name: ogImage, label: "Imagen al compartir (1200×630 ideal)", widget: image }
+          - { name: ogImageAlt, label: Texto alternativo de esa imagen, widget: string }
+          - { name: indexable, label: "Permitir que Google indexe la web", widget: boolean, default: true, hint: "Apágalo solo si el sitio está en construcción." }
+          - { name: googleSiteVerification, label: Código de verificación de Google Search Console, widget: string, required: false, hint: "Solo el valor de content=\"...\"" }
+          - { name: bingSiteVerification, label: Código de verificación de Bing, widget: string, required: false }
+          - { name: ga4Id, label: "ID de Google Analytics 4 (G-XXXXXXX)", widget: string, required: false, hint: "Si lo activas, actualiza el aviso de privacidad: hoy dice que no hay cookies de seguimiento." }
+          - { name: founder, label: Fundadora, widget: string }
+          - { name: founderRole, label: Cargo de la fundadora, widget: string }
+          - { name: streetAddress, label: "Dirección (opcional)", widget: string, required: false, hint: "Déjala vacía si atienden sin oficina abierta al público." }
+          - { name: postalCode, label: Código postal, widget: string, required: false }
+          - { name: latitude, label: Latitud, widget: string, required: false }
+          - { name: longitude, label: Longitud, widget: string, required: false }
+          - { name: googleMapsUrl, label: "Enlace a la ficha de Google Business Profile", widget: string, required: false }
+          - { name: areaServed, label: Zonas que atienden, widget: list, field: { name: zona, label: Zona, widget: string } }
+          - name: openingHours
+            label: Horario (para Google)
+            widget: list
+            fields:
+              - name: days
+                label: Días
+                widget: select
+                multiple: true
+                options:
+                  - { label: Lunes, value: Monday }
+                  - { label: Martes, value: Tuesday }
+                  - { label: Miércoles, value: Wednesday }
+                  - { label: Jueves, value: Thursday }
+                  - { label: Viernes, value: Friday }
+                  - { label: Sábado, value: Saturday }
+                  - { label: Domingo, value: Sunday }
+              - { name: opens, label: "Abre (HH:MM)", widget: string, pattern: ['^\d{2}:\d{2}$', 'Formato 08:00'] }
+              - { name: closes, label: "Cierra (HH:MM)", widget: string, pattern: ['^\d{2}:\d{2}$', 'Formato 18:00'] }
+          - { name: sameAs, label: Perfiles oficiales (Instagram, LinkedIn, etc.), widget: list, field: { name: url, label: URL, widget: string } }
+
+  # ─────────────────────────── SECCIONES DE LA PÁGINA ───────────────────────────
+  - name: secciones
+    label: Secciones de la página
+    icon: layout
+    description: Todo el contenido visible de la web, en el orden en que aparece.
+    files:
+      - name: hero
+        label: 1. Portada
+        file: src/data/hero.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño superior, widget: string }
+          - { name: title, label: "Título principal (H1)", widget: text }
+          - { name: text, label: Texto, widget: text }
+          - { name: ctaLabel, label: Texto del botón de WhatsApp, widget: string }
+          - { name: secondaryLabel, label: Texto del segundo botón, widget: string, required: false }
+          - { name: secondaryHref, label: "Enlace del segundo botón (ej. #casos)", widget: string, required: false }
+          - { name: image, label: Foto, widget: image }
+          - { name: imageAlt, label: Descripción de la foto (alt), widget: string }
+          - { name: badgeName, label: Nombre en la tarjeta, widget: string }
+          - { name: badgeRole, label: Cargo en la tarjeta, widget: string }
+
+      - name: clientes
+        label: 2. Logos de clientes
+        file: src/data/clientes.json
+        format: json
+        fields:
+          - { name: title, label: Título, widget: string }
+          - name: items
+            label: Logos
+            widget: list
+            summary: "{{fields.alt}}"
+            fields:
+              - { name: src, label: Logo (PNG transparente), widget: image }
+              - { name: alt, label: Nombre de la marca, widget: string }
+              - { name: h, label: "Alto en píxeles (38–84)", widget: number, value_type: int, min: 30, max: 100, default: 64 }
+
+      - name: cifras
+        label: 3. Cifras
+        file: src/data/cifras.json
+        format: json
+        fields:
+          - name: items
+            label: Cifras
+            widget: list
+            summary: "{{fields.value}} {{fields.text}}"
+            fields:
+              - { name: value, label: "Cifra (ej. +20)", widget: string }
+              - { name: text, label: Texto, widget: text }
+
+      - name: servicios
+        label: 4. Servicios
+        file: src/data/servicios.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño, widget: string }
+          - { name: title, label: Título, widget: string }
+          - { name: intro, label: Introducción, widget: text }
+          - name: items
+            label: Servicios
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: Servicio, widget: string }
+              - { name: text, label: Descripción, widget: text }
+              - name: icon
+                label: Ícono
+                widget: select
+                options:
+                  - { label: Cámara, value: camara }
+                  - { label: Estrella, value: estrella }
+                  - { label: Celular, value: movil }
+                  - { label: Código, value: codigo }
+                  - { label: Video, value: video }
+                  - { label: Capas, value: capas }
+                  - { label: Diana, value: diana }
+                  - { label: Brújula, value: brujula }
+                  - { label: Calendario, value: calendario }
+                  - { label: Flechas de ajuste, value: ajustes }
+                  - { label: Gráfica, value: grafica }
+
+      - name: diferencia
+        label: 5. Nuestra diferencia
+        file: src/data/diferencia.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño, widget: string }
+          - { name: title, label: Título, widget: text }
+          - { name: text, label: Texto, widget: text }
+          - name: items
+            label: Puntos
+            widget: list
+            summary: "{{fields.text}}"
+            fields:
+              - { name: text, label: Texto, widget: string }
+              - name: icon
+                label: Ícono
+                widget: select
+                options:
+                  - { label: Calendario, value: calendario }
+                  - { label: Flechas de ajuste, value: ajustes }
+                  - { label: Gráfica, value: grafica }
+                  - { label: Estrella, value: estrella }
+                  - { label: Diana, value: diana }
+                  - { label: Brújula, value: brujula }
+
+      - name: casos
+        label: 6. Casos de éxito
+        file: src/data/casos.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño, widget: string }
+          - { name: title, label: Título, widget: text }
+          - name: items
+            label: Casos (cada uno es una pestaña)
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: tab, label: Nombre en la pestaña, widget: string }
+              - { name: title, label: Nombre del cliente, widget: string }
+              - { name: kicker, label: "Tipo de trabajo (ej. Manejo integral de redes)", widget: string }
+              - { name: text, label: Historia del caso, widget: text }
+              - { name: logo, label: Logo del cliente, widget: image }
+              - { name: logoAlt, label: Nombre para el logo (alt), widget: string }
+              - { name: video, label: "Video vertical (MP4, corto y sin sonido)", widget: file }
+              - { name: poster, label: Imagen de portada del video, widget: image }
+              - { name: tags, label: Etiquetas, widget: list, field: { name: tag, label: Etiqueta, widget: string } }
+              - name: highlight
+                label: Resultado destacado (opcional)
+                widget: object
+                required: false
+                collapsed: true
+                fields:
+                  - { name: big, label: "Cifra o frase grande", widget: string, required: false }
+                  - { name: text, label: Texto de apoyo, widget: string, required: false }
+              - name: gallery
+                label: Fotos (opcional, ideal 3)
+                widget: list
+                required: false
+                collapsed: true
+                fields:
+                  - { name: src, label: Foto, widget: image }
+                  - { name: alt, label: Descripción (alt), widget: string }
+
+      - name: testimonios
+        label: 7. Testimonios
+        file: src/data/testimonios.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño, widget: string }
+          - { name: title, label: Título, widget: string }
+          - name: items
+            label: Testimonios
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: quote, label: "Testimonio (sin comillas)", widget: text }
+              - { name: name, label: Nombre, widget: string }
+              - { name: role, label: Cargo o empresa, widget: string }
+              - { name: video, label: Video (opcional), widget: file, required: false }
+              - { name: poster, label: Portada del video, widget: image, required: false }
+
+      - name: branding
+        label: 8. Portafolio de branding
+        file: src/data/branding.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño, widget: string }
+          - { name: title, label: Título, widget: string }
+          - { name: intro, label: Introducción, widget: text }
+          - name: items
+            label: Proyectos
+            widget: list
+            summary: "{{fields.name}} · {{fields.kind}}"
+            fields:
+              - { name: src, label: "Imagen (vertical 4:5)", widget: image }
+              - { name: name, label: Cliente, widget: string }
+              - { name: kind, label: "Tipo (Branding, Rebranding...)", widget: string }
+
+      - name: proyectos
+        label: 9. Más proyectos
+        file: src/data/proyectos.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño, widget: string }
+          - { name: title, label: Título, widget: string }
+          - { name: intro, label: Introducción, widget: text }
+          - name: items
+            label: Proyectos
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: name, label: Cliente, widget: string }
+              - { name: logo, label: Logo, widget: image, required: false }
+              - { name: kind, label: Qué hicimos, widget: string }
+              - { name: text, label: Descripción, widget: text }
+              - { name: url, label: "Sitio web del cliente (opcional)", widget: string, required: false }
+              - name: images
+                label: "Fotos (ideal 4, verticales)"
+                widget: list
+                fields:
+                  - { name: src, label: Foto, widget: image }
+                  - { name: alt, label: Descripción (alt), widget: string }
+
+      - name: membresias
+        label: 10. Membresías
+        file: src/data/membresias.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño, widget: string }
+          - { name: title, label: Título, widget: text }
+          - { name: intro, label: Introducción, widget: text }
+          - name: items
+            label: Membresías
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { name: category, label: "Categoría (ej. Estrategia)", widget: string }
+              - { name: name, label: Nombre, widget: string }
+              - { name: text, label: Descripción corta, widget: text }
+              - { name: features, label: Qué incluye, widget: list, field: { name: item, label: Punto, widget: string } }
+              - { name: excludes, label: Qué no incluye, widget: string, required: false }
+              - { name: featured, label: Destacada (fondo morado), widget: boolean, default: false }
+              - { name: badge, label: "Etiqueta (ej. La más completa)", widget: string, required: false }
+          - name: notes
+            label: Condiciones
+            widget: list
+            summary: "{{fields.bold}}"
+            fields:
+              - { name: bold, label: Texto en negrita, widget: string }
+              - { name: text, label: Resto del texto, widget: string }
+
+      - name: metodo
+        label: 11. Cómo trabajamos
+        file: src/data/metodo.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño, widget: string }
+          - { name: title, label: Título, widget: string }
+          - { name: text, label: Texto, widget: text }
+          - { name: resultsTitle, label: Título del recuadro de resultados, widget: string }
+          - { name: results, label: Resultados que miden, widget: list, field: { name: item, label: Resultado, widget: string } }
+          - name: steps
+            label: Pasos (se numeran solos)
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: Paso, widget: string }
+              - { name: text, label: Descripción, widget: text }
+              - { name: badge, label: "Tiempo (opcional, ej. 5 días hábiles)", widget: string, required: false }
+
+      - name: nosotros
+        label: 12. Nosotros y equipo
+        file: src/data/nosotros.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño, widget: string }
+          - { name: name, label: Nombre, widget: string }
+          - { name: image, label: Foto, widget: image }
+          - { name: imageAlt, label: Descripción de la foto (alt), widget: string }
+          - { name: paragraphs, label: Párrafos, widget: list, field: { name: p, label: Párrafo, widget: text } }
+          - { name: ctaLabel, label: Texto del botón, widget: string }
+          - { name: ctaMessage, label: Mensaje de WhatsApp del botón, widget: text }
+          - { name: instagram, label: "Instagram personal (sin @)", widget: string, required: false }
+          - { name: teamTitle, label: Título del equipo, widget: string }
+          - name: team
+            label: Equipo
+            widget: list
+            summary: "{{fields.name}} · {{fields.role}}"
+            fields:
+              - { name: name, label: Nombre, widget: string }
+              - { name: role, label: Cargo, widget: string }
+              - { name: photo, label: "Foto (opcional; sin foto se muestran las iniciales)", widget: image, required: false }
+
+      - name: charlas
+        label: 13. Charlas
+        file: src/data/charlas.json
+        format: json
+        fields:
+          - { name: kicker, label: Texto pequeño, widget: string }
+          - { name: title, label: Título, widget: string }
+          - { name: text, label: Texto, widget: text }
+          - { name: tags, label: Etiquetas, widget: list, field: { name: tag, label: Etiqueta, widget: string } }
+          - { name: ctaLabel, label: Texto del botón, widget: string }
+          - { name: ctaMessage, label: Mensaje de WhatsApp, widget: text }
+          - name: images
+            label: "Fotos (2, verticales)"
+            widget: list
+            max: 2
+            fields:
+              - { name: src, label: Foto, widget: image }
+              - { name: alt, label: Descripción (alt), widget: string }
+
+      - name: contacto
+        label: 14. Contacto
+        file: src/data/contacto.json
+        format: json
+        fields:
+          - { name: title, label: Título, widget: string }
+          - { name: text, label: Texto, widget: text }
+          - { name: bullets, label: Puntos, widget: list, field: { name: item, label: Punto, widget: string } }
+          - { name: hours, label: "Horario (una línea por renglón)", widget: list, field: { name: line, label: Línea, widget: string } }
+          - { name: location, label: Ubicación, widget: string }
+
+      - name: privacidad
+        label: 15. Aviso de privacidad
+        file: src/data/privacidad.json
+        format: json
+        fields:
+          - { name: summary, label: Título desplegable, widget: string }
+          - name: items
+            label: Apartados
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { name: title, label: "Título (sin punto final)", widget: string }
+              - { name: text, label: Texto, widget: text }
+          - { name: closing, label: Cierre, widget: text }
